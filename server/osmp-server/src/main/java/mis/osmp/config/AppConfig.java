@@ -16,7 +16,8 @@ public class AppConfig {
   public DataSource dataSource() {
     final BasicDataSource basicDataSource = new BasicDataSource();
     basicDataSource.setDriverClassName("org.hsqldb.jdbcDriver");
-    basicDataSource.setUrl("jdbc:hsqldb:file:db/data");
+//    basicDataSource.setUrl("jdbc:hsqldb:file:db/data");
+    basicDataSource.setUrl("jdbc:hsqldb:mem:db/data");
     basicDataSource.setUsername("sa");
     return basicDataSource;
   }
