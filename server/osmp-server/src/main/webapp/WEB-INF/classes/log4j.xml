@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+  <!-- Root -->
+  <root>
+    <priority value="INFO"/>
+    <appender-ref ref="consoleAppender"/>
+    <appender-ref ref="fileAppender"/>
+    <appender-ref ref="errorAppender"/>
+  </root>
+
+  <!-- SQL Loggers -->
+  <logger name="org.hibernate.SQL">
+    <level value="DEBUG"/>
+    <appender-ref ref="sqlAppender"/>
+  </logger>
+  <logger name="org.hibernate.type">
+    <level value="INFO"/>
+    <appender-ref ref="sqlAppender"/>
+  </logger>
+
+
+  <!-- Console Appender -->
+  <appender name="consoleAppender" class="org.apache.log4j.ConsoleAppender">
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d{dd MMM yyyy HH:mm:Ss,SSS} %5p: %m%n"/>
+    </layout>
+    <param name="Threshold" value="INFO"/>
+  </appender>
+
+  <!-- File Appender -->
+  <appender name="fileAppender" class="org.apache.log4j.FileAppender">
+    <param name="file" value="${catalina.home}/logs/mis-osmp.log"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d{dd MMM yyyy HH:mm:Ss,SSS} %5p: %m%n"/>
+    </layout>
+    <param name="Threshold" value="INFO"/>
+    <!-- Filters -->
+    <filter class="org.apache.log4j.varia.LevelMatchFilter">
+      <param name="LevelToMatch" value="INFO"/>
+      <param name="AcceptOnMatch" value="true"/>
+    </filter>
+    <filter class="org.apache.log4j.varia.LevelMatchFilter">
+      <param name="LevelToMatch" value="WARN"/>
+      <param name="AcceptOnMatch" value="true"/>
+    </filter>
+    <filter class="org.apache.log4j.varia.DenyAllFilter"/>
+  </appender>
+
+  <!-- Error Appender -->
+  <appender name="errorAppender" class="org.apache.log4j.FileAppender">
+    <param name="file" value="${catalina.home}/logs/mis-osmp-error.log"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d{dd MMM yyyy HH:mm:Ss,SSS} %5p: %m%n"/>
+    </layout>
+    <param name="Threshold" value="ERROR"/>
+  </appender>
+
+  <!--SQL Appender-->
+  <appender name="sqlAppender" class="org.apache.log4j.FileAppender">
+    <param name="file" value="${catalina.home}/logs/mis-osmp-sql.log"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d{dd MMM yyyy HH:mm:Ss,SSS} %5p: %m%n"/>
+    </layout>
+  </appender>
+
+</log4j:configuration>

@@ -1,5 +1,6 @@
 package mis.osmp.config;
 
+import mis.osmp.database.migration.config.DatabaseMigrationConfiguration;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -17,7 +18,10 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 
   @Override
   protected Class<?>[] getRootConfigClasses() {
-    return new Class<?>[]{};
+    return new Class<?>[]{
+        AppConfig.class,
+        DatabaseMigrationConfiguration.class
+    };
   }
 
   @Override
