@@ -7,12 +7,14 @@
   <version>0.0.1-SNAPSHOT</version>
   <properties>
     <spring.version>4.1.2.RELEASE</spring.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
   </properties>
   <name>MIS OSMP parent module</name>
 
   <modules>
     <module>osmp-server</module>
-    <module>osmp-database</module>
+    <module>osmp-database-hsqldb</module>
   </modules>
 
   <build>
